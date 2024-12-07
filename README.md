@@ -1,2 +1,7 @@
-# conato05
-Compendio jQuery. Pruebas iniciales
+ 
+reconstruir dependencias al clonar este proyecto
+npm install
+
+arrancar servidor
+npm run server
+
