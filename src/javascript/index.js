@@ -1,5 +1,38 @@
 $(function(){ // ready abreviado
-
+    $("#listar").on("click",function(){
+    
+        $.get('https://my-json-server.typicode.com/desarrollo-seguro/dato/solicitudes', function(data){
+            $("#div_listar").text("OK"); // La función callback con los datos 'data', da el OK. GET exitoso.
+        })
+        
+    })
+    $("#grabar").on("click",function(){
+        /*const dataToSend = {
+            id: 3,
+            nombre: "Marina",
+            apellido: "Fernández"
+        };
+        */
+        $.post(
+            'https://my-json-server.typicode.com/desarrollo-seguro/dato/solicitudes',
+            dataToSend,
+            function(data) {
+                $("#div_grabar").text("¡Datos guardados correctamente!");
+            }
+        )
+        .fail(function(xhr, status, error) {
+            console.error("Error en POST: ", error);
+            $("#div_grabar").text("Error al guardar los datos.");
+        });
+    })
+    $("#actualizar").on("click",function(){
+    
+        $.ajax('https://my-json-server.typicode.com/desarrollo-seguro/dato/solicitudes', put, function(data){
+            $("#div_actualizar").text("OK"); // No existe un $.put como ocurre con get y post.
+        })
+        
+    }) 
+    
     $("#leer").on("click", function(){
         $.ajax({
             url: 'https://my-json-server.typicode.com/desarrollo-seguro/dato/solicitudes',  // URL de la API.
@@ -28,7 +61,7 @@ $(function(){ // ready abreviado
 
 console.log('Consoleando que es gerundio');
 
-// Web para pruebas de llamada a servidor ... https://my-json-server.typicode.com/desarrollo-seguro/dato/solicitudes
+// json-server es un servidor de datos JSON simulado ... https://my-json-server.typicode.com/desarrollo-seguro/dato/solicitudes
 
 /* Opción de visualización: raw data
 [
